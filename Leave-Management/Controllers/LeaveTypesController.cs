@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Leave_Management.Contracts;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,6 +11,15 @@ namespace Leave_Management.Controllers
 {
     public class LeaveTypesController : Controller
     {
+        private readonly ILeaveTypeRepository _repo;
+        private readonly IMapper _mapper;
+
+        public LeaveTypesController(ILeaveTypeRepository repo, IMapper mapper)
+        {
+            _repo = repo;
+            _mapper = mapper;
+        }
+
         // GET: LeaveTypesController
         public ActionResult Index()
         {
